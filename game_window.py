@@ -9,8 +9,8 @@ python -m arcade.examples.sprite_starting_template
 """
 import arcade
 
-SCREEN_WIDTH = 500
-SCREEN_HEIGHT = 500
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
 
 
 class MyGame(arcade.Window):
