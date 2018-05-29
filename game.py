@@ -52,6 +52,7 @@ class MyGame(arcade.Window):
 
         # Set the background color
         arcade.set_background_color(arcade.color.AMAZON)
+		
 
     def setup(self):
         """ Set up the game and initialize the variables. """
@@ -82,6 +83,14 @@ class MyGame(arcade.Window):
 
         # Draw all the sprites.
         self.player_sprite.draw()
+		point_list = ((390, 450),
+              (450, 450),
+              (390, 480),
+              (450, 480),
+              (390, 510),
+              (450, 510)
+              )
+		arcade.draw_lines(point_list, arcade.color.BLUE, 3)
 
 
     def on_mouse_motion(self, x, y, dx, dy):
@@ -90,8 +99,7 @@ class MyGame(arcade.Window):
         """
         self.player_sprite.center_x = x
         self.player_sprite.center_y = y
-		arcade.draw_point(self.player_sprite.center_x, self.player_sprite.center_y, (0, 0, 0, 127), 10)
-
+		arcade.draw_point(70, 495, (255, 0, 0, 127), 10)
 
     def update(self, delta_time):
         """ Movement and game logic """
@@ -100,19 +108,12 @@ class MyGame(arcade.Window):
         # example though.)
         self.all_sprites_list.update()
 
-        # Generate a list of all sprites that collided with the player.
-        hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.coin_list)
-
-        # Loop through each colliding sprite, remove it, and add to the score.
-        for coin in hit_list:
-            coin.kill()
-            self.score += 1
-
 
 def main():
     """ Main method """
     window = MyGame(SCREEN_WIDTH, SCREEN_HEIGHT)
     window.setup()
+	arcade.finish_render()
     arcade.run()
 
 
